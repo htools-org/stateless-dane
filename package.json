@@ -1,6 +1,6 @@
 {
   "name": "stateless-dane",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A library/utility for Stateless DANE certificates",
   "keywords": [
     "dane",
@@ -26,6 +26,7 @@
   },
   "files": [
     "bin/**/*",
+    "etc/**/*",
     "lib/**/*"
   ],
   "dependencies": {
