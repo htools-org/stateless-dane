@@ -24,6 +24,10 @@
     "test": "bmocha --reporter spec test/*.js",
     "test-file": "bmocha --reporter spec"
   },
+  "files": [
+    "bin/**/*",
+    "lib/**/*"
+  ],
   "dependencies": {
     "bcfg": "^0.2.1",
     "bcrypto": "https://github.com/pinheadmz/bcrypto#ssl1",
