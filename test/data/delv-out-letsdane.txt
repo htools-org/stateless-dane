@@ -1,0 +1,106 @@
+;; fetch: _443._tcp.letsdane/TLSA
+;; received packet from 127.0.0.1#5350
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  28248
+;; flags: qr rd ra ad; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 7c72836ea6f273c1
+;; QUESTION SECTION:
+;_443._tcp.letsdane.            IN      TLSA
+
+;; ANSWER SECTION:
+;_443._tcp.letsdane.    174     IN      TLSA    3 1 1 (
+;                                               51A908C93287B3EA15BF58CA2C0B
+;                                               A36058FA20E33B9BEB8068433B98
+;                                               6EA4843B )
+;_443._tcp.letsdane.    174     IN      RRSIG   TLSA 15 3 3600 (
+;                                               20230327090150 20230319060150 27214 letsdane.
+;                                               dIaaCOCMKDyU63vd/VKplsQRgM5P
+;                                               Bzag6V2yHs/p/RvHUY24/rniKxM7
+;                                               /jH2wa9uJ1nS1hJ3iVjK2gXXj82f
+;                                               Aw== )
+
+
+;; fetch: letsdane/DNSKEY
+;; received packet from 127.0.0.1#5350
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:   2759
+;; flags: qr rd ra ad; QUESTION: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 7c72836ea6f273c1
+;; QUESTION SECTION:
+;letsdane.                      IN      DNSKEY
+
+;; ANSWER SECTION:
+;letsdane.              2171    IN      DNSKEY  257 3 15 (
+;                                               FeDD+6E44LAYo8sJtpzfbyLOkCMK
+;                                               ePxArIEK0OxkNqk=
+;                                               ) ; KSK; alg = ED25519 ; key id = 28057
+;letsdane.              2171    IN      DNSKEY  256 3 15 (
+;                                               sHSzJPaSZ/KzG+tArxLITJxZgv1b
+;                                               qwVcUA6/kr+hPsM=
+;                                               ) ; ZSK; alg = ED25519 ; key id = 27214
+;letsdane.              2171    IN      RRSIG   DNSKEY 15 1 3600 (
+;                                               20230327090150 20230319060150 28057 letsdane.
+;                                               naUFmJyeiXAiH/jkGTUV6Gt0BJ8w
+;                                               WvxfxS5QsUtWBOfaRwPZFBN+i1ka
+;                                               it4hbS54jNUVxxb+rUfpuUwHpUN9
+;                                               CQ== )
+
+
+;; fetch: letsdane/DS
+;; received packet from 127.0.0.1#5350
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  14935
+;; flags: qr rd ra ad; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 7c72836ea6f273c1
+;; QUESTION SECTION:
+;letsdane.                      IN      DS
+
+;; ANSWER SECTION:
+;letsdane.              20170   IN      DS      28057 15 2 (
+;                                               BFF60097255A21E8054EB53D7448
+;                                               1B4AA6E51C1B85F8BCE97A6CF5AE
+;                                               C91ECBB0 )
+;letsdane.              9370    IN      RRSIG   DS 13 1 21600 (
+;                                               20240318102900 20230318102900 60944 .
+;                                               t6fbS9L1y4MHRSR8eJzVJ9WfFM4Q
+;                                               7lxi+MP29l0uoU5r4WT/ItMvTsLV
+;                                               CeWGDUndaovg2dnAjZZe3EE5xX8R
+;                                               BQ== )
+
+
+;; fetch: ./DNSKEY
+;; received packet from 127.0.0.1#5350
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  62070
+;; flags: qr rd ra ad; QUESTION: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+; COOKIE: 7c72836ea6f273c1
+;; QUESTION SECTION:
+;.                              IN      DNSKEY
+
+;; ANSWER SECTION:
+;.                      9371    IN      DNSKEY  257 3 13 (
+;                                               T9cURJ2M/Mz9q6UsZNY+Ospyvj+U
+;                                               v+tgrrWkLtPQwgU/Xu5Yk0l02Sn5
+;                                               ua2xAQfEYIzRO6v5iA+BejMeEwNP
+;                                               4Q==
+;                                               ) ; KSK; alg = ECDSAP256SHA256 ; key id = 35215
+;.                      9371    IN      DNSKEY  256 3 13 (
+;                                               I5nPs6clFa1gnwn9IpVDGdJLfEON
+;                                               zgD1NcfuEwEIVuIoHdZGgvVblsLN
+;                                               bRO+spW3nQYHg92svhy1HOjTiFBI
+;                                               sQ==
+;                                               ) ; ZSK; alg = ECDSAP256SHA256 ; key id = 60944
+;.                      9371    IN      RRSIG   DNSKEY 13 0 10800 (
+;                                               20240318102901 20230318102901 35215 .
+;                                               sl2qmUc9G1LUl9xxiugwVHpuIQKD
+;                                               1GZ2x2pGyLBEBt5VQVsQuNdwvNyR
+;                                               978ruK9NMONTRm4su/2B7KSApEm8
+;                                               HA== )
+
+
+_443._tcp.letsdane.     174     IN      TLSA    3 1 1 51A908C93287B3EA15BF58CA2C0BA36058FA20E33B9BEB8068433B986EA4843B
+_443._tcp.letsdane.     174     IN      RRSIG   TLSA 15 3 3600 20230327090150 20230319060150 27214 letsdane. dIaaCOCMKDyU63vd/VKplsQRgM5PBzag6V2yHs/p/RvHUY24/rniKxM7/jH2wa9uJ1nS1hJ3iVjK2gXXj82fAw==

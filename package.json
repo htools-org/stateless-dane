@@ -1,0 +1,38 @@
+{
+  "name": "stateless-dane",
+  "version": "0.0.1",
+  "description": "A library/utility for Stateless DANE certificates",
+  "keywords": [
+    "dane",
+    "certificates",
+    "hip-0017",
+    "handshake",
+    "hns"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": "git://github.com/htools-org/stateless-dane.git",
+  "homepage": "https://github.com/htools-org/stateless-dane#readme",
+  "bugs": {
+    "url": "https://github.com/htools-org/stateless-dane/issues"
+  },
+  "author": "Rithvik Vibhu <rithvikvibhu@gmail.com>",
+  "bin": {
+    "stateless-dane-cli": "bin/stateless-dane-cli.js"
+  },
+  "scripts": {
+    "test": "bmocha --reporter spec test/*.js",
+    "test-file": "bmocha --reporter spec"
+  },
+  "dependencies": {
+    "bcfg": "^0.2.1",
+    "bcrypto": "https://github.com/pinheadmz/bcrypto#ssl1",
+    "bns": "^0.15.0",
+    "bsert": "^0.0.10",
+    "hs-client": "^0.0.13",
+    "urkel": "^1.0.3"
+  },
+  "devDependencies": {
+    "bmocha": "^2.1.8"
+  }
+}
