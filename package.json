@@ -18,7 +18,7 @@
   },
   "author": "Rithvik Vibhu <rithvikvibhu@gmail.com>",
   "bin": {
-    "stateless-dane-cli": "bin/stateless-dane-cli.js"
+    "stateless-dane": "bin/stateless-dane.js"
   },
   "scripts": {
     "test": "bmocha --reporter spec test/*.js",

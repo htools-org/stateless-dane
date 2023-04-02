@@ -11,17 +11,19 @@ In any case, a connection to a hsd node is required. Connection settings are rea
 
 #### As a CLI
 
+Install it globally: `npm i -g stateless-dane`
+
 The CLI can generate new and inspect existing certificates:
 
 ```
-❯ stateless-dane-cli
+❯ stateless-dane
 
-stateless-dane-cli v0.0.1
+stateless-dane v0.0.1
 
 Usage:
-    stateless-dane-cli inspect-cert <filepath>
-    stateless-dane-cli generate <name> [--sign <true|false>] [--public-key <hex>]
-    stateless-dane-cli get-ext-data <name> [--parsed <true|false>]
+    stateless-dane inspect-cert <filepath>
+    stateless-dane generate <name> [--sign <true|false>] [--public-key <hex>]
+    stateless-dane get-ext-data <name> [--parsed <true|false>]
 
 
 Options:
@@ -34,13 +36,13 @@ Options:
 
 Examples:
     * Inspect an existing certificate:
-        $ stateless-dane-cli inspect-cert /tmp/cert.pem
+        $ stateless-dane inspect-cert /tmp/cert.pem
 
     * Generate a new certificate for letsdane:
-        $ stateless-dane-cli generate letsdane
+        $ stateless-dane generate letsdane
 
     * Only get raw extension data to be used by other cert issuers:
-        $ stateless-dane-cli get-ext-data letsdane --parsed false
+        $ stateless-dane get-ext-data letsdane --parsed false
 ```
 
 #### As a library

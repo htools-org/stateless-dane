@@ -3,7 +3,7 @@
 
 const Config = require('bcfg/lib/config');
 const { NodeClient } = require('hs-client');
-const { StatelessDANECertificate } = require('..');
+const { StatelessDANECertificate } = require('../lib');
 const pkg = require('../package.json');
 
 const nodePorts = {
@@ -14,12 +14,12 @@ const nodePorts = {
 };
 
 const HELP = `
-stateless-dane-cli v${pkg.version}
+stateless-dane v${pkg.version}
 
 Usage:
-    stateless-dane-cli inspect-cert <filepath>
-    stateless-dane-cli generate <name> [--sign <true|false>] [--public-key <hex>]
-    stateless-dane-cli get-ext-data <name> [--parsed <true|false>]
+    stateless-dane inspect-cert <filepath>
+    stateless-dane generate <name> [--sign <true|false>] [--public-key <hex>]
+    stateless-dane get-ext-data <name> [--parsed <true|false>]
 
 
 Options:
@@ -32,13 +32,13 @@ Options:
 
 Examples:
     * Inspect an existing certificate:
-        $ stateless-dane-cli inspect-cert /tmp/cert.pem
+        $ stateless-dane inspect-cert /tmp/cert.pem
 
     * Generate a new certificate for letsdane:
-        $ stateless-dane-cli generate letsdane
+        $ stateless-dane generate letsdane
 
     * Only get raw extension data to be used by other cert issuers:
-        $ stateless-dane-cli get-ext-data letsdane --parsed false
+        $ stateless-dane get-ext-data letsdane --parsed false
 `;
 
 
