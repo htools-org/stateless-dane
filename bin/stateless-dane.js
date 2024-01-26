@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 'use strict';
 
-const Config = require('bcfg/lib/config');
+const fs = require('node:fs');
+const Config = require('bcfg');
 const { NodeClient } = require('hs-client');
+const rsa = require('bcrypto/lib/rsa');
 const { StatelessDANECertificate } = require('../lib');
 const pkg = require('../package.json');
 
@@ -18,14 +20,15 @@ stateless-dane v${pkg.version}
 
 Usage:
     stateless-dane inspect-cert <filepath>
-    stateless-dane generate <name> [--sign <true|false>] [--public-key <hex>]
+    stateless-dane generate <name> [--sign <true|false>] [--public-key-file <filepath>]
     stateless-dane get-ext-data <name> [--parsed <true|false>]
 
 
 Options:
-    --sign <bool>         whether to sign the certificate (default: true)
-    --public-key <hex>    create a certificate with this public key (default: generated keypair)
-    --parsed <bool>       whether to return parsed extension data (default: true)
+    --sign <bool>                   whether to sign the certificate (default: true)
+    --parsed <bool>                 whether to return parsed extension data (default: true)
+    --public-key-file <filepath>    create a certificate with this public key file, expects json (default: generated keypair)
+                                    (example of public key format can be found at examples/sample-public-key.json)
 
     [all hsd client options like http-host, api-key, etc.]
 
@@ -81,7 +84,11 @@ Examples:
   const command = config.str(0);
 
   const sign = config.bool('sign', true);
-  const publicKey = config.buf('public-key');
+  const publicKeyFile = config.str('public-key-file');
+  var publicKeyJson
+  if (publicKeyFile) {
+    publicKeyJson = JSON.parse(fs.readFileSync(publicKeyFile, 'utf8'));
+  }
   const parsed = config.bool('parsed', true);
 
   switch (command) {
@@ -105,8 +112,12 @@ Examples:
           return;
         }
         const cert = new StatelessDANECertificate(nodeClient, name);
-        if (publicKey) {
-          cert.publicKey = publicKey;
+        if (publicKeyJson) {
+          const parsed = {
+            n: Buffer.from(publicKeyJson.n, 'hex'),
+            e: Buffer.from(publicKeyJson.e, 'hex'),
+          };
+          cert.publicKey = rsa.publicKeyImport(parsed);
         }
         await cert.create();
         if (sign) {
