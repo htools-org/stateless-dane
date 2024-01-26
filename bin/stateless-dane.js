@@ -32,6 +32,10 @@ Options:
 
     [all hsd client options like http-host, api-key, etc.]
 
+    [Global options]
+    --resolver-ip                   resolver IP to use for fetching dnssec chain
+    --resolver-port                 resolver port to use for fetching dnssec chain
+
 
 Examples:
     * Inspect an existing certificate:
@@ -91,6 +95,11 @@ Examples:
   }
   const parsed = config.bool('parsed', true);
 
+  const options = {
+    resolverIP: config.str('resolver-ip') || undefined,
+    resolverPort: config.str('resolver-port') || undefined,
+  }
+
   switch (command) {
     case 'inspect-cert':
       {
@@ -99,7 +108,7 @@ Examples:
           console.log(HELP);
           return;
         }
-        const cert = StatelessDANECertificate.fromPath(nodeClient, filepath);
+        const cert = StatelessDANECertificate.fromPath(nodeClient, filepath, options);
         console.log(JSON.stringify(cert.format(), null, 4));
       }
       break;
@@ -111,7 +120,7 @@ Examples:
           console.log(HELP);
           return;
         }
-        const cert = new StatelessDANECertificate(nodeClient, name);
+        const cert = new StatelessDANECertificate(nodeClient, name, options);
         if (publicKeyJson) {
           const parsed = {
             n: Buffer.from(publicKeyJson.n, 'hex'),
@@ -134,7 +143,7 @@ Examples:
           console.log(HELP);
           return;
         }
-        const cert = new StatelessDANECertificate(nodeClient, name);
+        const cert = new StatelessDANECertificate(nodeClient, name, options);
         const extensions = await Promise.all([
           cert._getUrkelProofExtension(),
           cert._getDnssecChainExtension(),
