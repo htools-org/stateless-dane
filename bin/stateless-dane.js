@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 'use strict';
 
+const fs = require('node:fs');
 const Config = require('bcfg');
 const { NodeClient } = require('hs-client');
+const rsa = require('bcrypto/lib/rsa');
 const { StatelessDANECertificate } = require('../lib');
-const fs = require('fs');
 const pkg = require('../package.json');
 
 const nodePorts = {
@@ -25,8 +26,9 @@ Usage:
 
 Options:
     --sign <bool>                   whether to sign the certificate (default: true)
-    --public-key-file <filepath>    create a certificate with this public key file, expects json (default: generated keypair)
     --parsed <bool>                 whether to return parsed extension data (default: true)
+    --public-key-file <filepath>    create a certificate with this public key file, expects json (default: generated keypair)
+                                    (example of public key format can be found at examples/sample-public-key.json)
 
     [all hsd client options like http-host, api-key, etc.]
 
@@ -40,8 +42,6 @@ Examples:
 
     * Only get raw extension data to be used by other cert issuers:
         $ stateless-dane get-ext-data letsdane --parsed false
-
-    * example of public key format can be found at examples/example.json
 `;
 
 
@@ -113,7 +113,11 @@ Examples:
         }
         const cert = new StatelessDANECertificate(nodeClient, name);
         if (publicKeyJson) {
-          cert.publicKeyJson = publicKeyJson;
+          const parsed = {
+            n: Buffer.from(publicKeyJson.n, 'hex'),
+            e: Buffer.from(publicKeyJson.e, 'hex'),
+          };
+          cert.publicKey = rsa.publicKeyImport(parsed);
         }
         await cert.create();
         if (sign) {
