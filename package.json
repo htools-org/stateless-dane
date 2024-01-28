@@ -1,6 +1,6 @@
 {
   "name": "stateless-dane",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A library/utility for Stateless DANE certificates",
   "keywords": [
     "dane",
