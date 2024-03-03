@@ -5,6 +5,7 @@ const fs = require('node:fs');
 const Config = require('bcfg');
 const { NodeClient } = require('hs-client');
 const rsa = require('bcrypto/lib/rsa');
+const forge = require('node-forge')
 const { StatelessDANECertificate } = require('../lib');
 const pkg = require('../package.json');
 
@@ -89,9 +90,9 @@ Examples:
 
   const sign = config.bool('sign', true);
   const publicKeyFile = config.str('public-key-file');
-  var publicKeyJson
+  var publicKeyData
   if (publicKeyFile) {
-    publicKeyJson = JSON.parse(fs.readFileSync(publicKeyFile, 'utf8'));
+    publicKeyData = fs.readFileSync(publicKeyFile, 'utf8')
   }
   const parsed = config.bool('parsed', true);
 
@@ -121,12 +122,24 @@ Examples:
           return;
         }
         const cert = new StatelessDANECertificate(nodeClient, name, options);
-        if (publicKeyJson) {
-          const parsed = {
-            n: Buffer.from(publicKeyJson.n, 'hex'),
-            e: Buffer.from(publicKeyJson.e, 'hex'),
-          };
-          cert.publicKey = rsa.publicKeyImport(parsed);
+        if (publicKeyData) {
+          let parsedKey
+          try {
+            const publicKey = forge.pki.publicKeyFromPem(publicKeyData);
+            parsedKey = {
+              n: Buffer.from(publicKey.n.toByteArray()), // modulus
+              e: Buffer.from(publicKey.e.toByteArray()), // exponent
+            };
+
+          }
+          catch (e) {
+            const obj = JSON.parse(publicKeyData)
+            parsedKey = {
+              n: Buffer.from(obj.n, 'hex'),
+              e: Buffer.from(obj.e, 'hex'),
+            };
+          }
+          cert.publicKey = rsa.publicKeyImport(parsedKey)
         }
         await cert.create();
         if (sign) {
