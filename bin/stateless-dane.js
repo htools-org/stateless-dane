@@ -89,6 +89,7 @@ Examples:
   const command = config.str(0);
 
   const sign = config.bool('sign', true);
+  const port = config.uint('port', 443);
   const publicKeyFile = config.str('public-key-file');
   var publicKeyData
   if (publicKeyFile) {
@@ -99,6 +100,7 @@ Examples:
   const options = {
     resolverIP: config.str('resolver-ip') || undefined,
     resolverPort: config.str('resolver-port') || undefined,
+    port: config.uint('port') || undefined,
   }
 
   switch (command) {
