@@ -33,6 +33,7 @@ Options:
     [all hsd client options like http-host, api-key, etc.]
 
     [Global options]
+    --port                          custom port for name (default: 443)
     --resolver-ip                   resolver IP to use for fetching dnssec chain
     --resolver-port                 resolver port to use for fetching dnssec chain
 
@@ -96,6 +97,7 @@ Examples:
   const parsed = config.bool('parsed', true);
 
   const options = {
+    port: config.str('port') || undefined,
     resolverIP: config.str('resolver-ip') || undefined,
     resolverPort: config.str('resolver-port') || undefined,
   }
