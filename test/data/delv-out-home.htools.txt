@@ -1,0 +1,110 @@
+;; fetch: _443._tcp.home.htools/TLSA
+;; received packet from 127.0.0.1#9592
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  15666
+;; flags: qr rd ra ad; QUESTION: 1, ANSWER: 2, AUTHORITY: 2, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+;; QUESTION SECTION:
+;_443._tcp.home.htools.         IN      TLSA
+
+;; ANSWER SECTION:
+;_443._tcp.home.htools. 3319    IN      TLSA    3 1 1 (
+;                                               EFB386BDFB86E2249988443E7912
+;                                               3773662CE0F4530BAC08732FFF4E
+;                                               5489262F )
+;_443._tcp.home.htools. 3319    IN      RRSIG   TLSA 13 2 3600 (
+;                                               20240711000000 20240620000000 24809 htools.
+;                                               MbIIk5HlsNn7loPDSlzzs1zCnmHf
+;                                               5H+NhUjUzD6tuQbAiWDxeVUdP8S2
+;                                               C3Ky51oOoS9BVah/kinp7rVvKM5b
+;                                               DA== )
+
+;; AUTHORITY SECTION:
+;_atproto.home.htools.  19      IN      NSEC    id.htools. TXT RRSIG NSEC
+;_atproto.home.htools.  19      IN      RRSIG   NSEC 13 3 300 (
+;                                               20240711000000 20240620000000 24809 htools.
+;                                               752XfdHGaZhYycWE7l1dN1Rnv6OT
+;                                               T2N0dF+tiKWjc19s8f0vAMNJp4W3
+;                                               OeAO1QOZ22u12aWoZhrlZw6hEhz7
+;                                               FQ== )
+
+
+;; fetch: htools/DNSKEY
+;; received packet from 127.0.0.1#9592
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  18460
+;; flags: qr rd ra ad; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+;; QUESTION SECTION:
+;htools.                                IN      DNSKEY
+
+;; ANSWER SECTION:
+;htools.                        19      IN      DNSKEY  257 3 13 (
+;                                               AiSHZyuYB+GxMUmSzUUfyN4chEGV
+;                                               yslV4XH4+VVhCgPBIZj8TQIgyqrs
+;                                               OvgnLSv4mTMINEx65aJfKAg28o2O
+;                                               Tw==
+;                                               ) ; KSK; alg = ECDSAP256SHA256 ; key id = 24809
+;htools.                        19      IN      RRSIG   DNSKEY 13 1 300 (
+;                                               20240711000000 20240620000000 24809 htools.
+;                                               6hjWrPV6TdEgotIhL+gTrDt4FiBr
+;                                               QhRDthdTgr4xY6eoYfbqQQITBQ8M
+;                                               Xqh36UVsa25ny605QWvjDQhhaG7N
+;                                               uw== )
+
+
+;; fetch: htools/DS
+;; received packet from 127.0.0.1#9592
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:   3387
+;; flags: qr rd ra ad; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+;; QUESTION SECTION:
+;htools.                                IN      DS
+
+;; ANSWER SECTION:
+;htools.                        21317   IN      DS      24809 13 2 (
+;                                               0DC7511C4ED2120B88F8E1ED11B2
+;                                               DB5235011F81F428B53BA2D2EADD
+;                                               2880D2E2 )
+;htools.                        10517   IN      RRSIG   DS 13 1 21600 (
+;                                               20240713065422 20240615065422 60944 .
+;                                               CTqH4BR8Lgcgox/j1MtYgzjeqEvf
+;                                               Xsb4ioAaQVQwp6ew4+sMdJcfeyft
+;                                               MYffRkote/9JHRDs5grH+vBJTQYO
+;                                               aQ== )
+
+
+;; fetch: ./DNSKEY
+;; received packet from 127.0.0.1#9592
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  12121
+;; flags: qr rd ra ad; QUESTION: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+;; QUESTION SECTION:
+;.                              IN      DNSKEY
+
+;; ANSWER SECTION:
+;.                      10518   IN      DNSKEY  256 3 13 (
+;                                               I5nPs6clFa1gnwn9IpVDGdJLfEON
+;                                               zgD1NcfuEwEIVuIoHdZGgvVblsLN
+;                                               bRO+spW3nQYHg92svhy1HOjTiFBI
+;                                               sQ==
+;                                               ) ; ZSK; alg = ECDSAP256SHA256 ; key id = 60944
+;.                      10518   IN      DNSKEY  257 3 13 (
+;                                               T9cURJ2M/Mz9q6UsZNY+Ospyvj+U
+;                                               v+tgrrWkLtPQwgU/Xu5Yk0l02Sn5
+;                                               ua2xAQfEYIzRO6v5iA+BejMeEwNP
+;                                               4Q==
+;                                               ) ; KSK; alg = ECDSAP256SHA256 ; key id = 35215
+;.                      10518   IN      RRSIG   DNSKEY 13 0 10800 (
+;                                               20240713065423 20240615065423 35215 .
+;                                               BOswy0Rz44pMad7erWTr2tRTarka
+;                                               hqx87gjcyWoW+IHzgoKv/GV4Qj3b
+;                                               6ShKbFeFJWVi+quDdPA0eZ6cmqJq
+;                                               1w== )
+
+
+; fully validated
+_443._tcp.home.htools.  19      IN      TLSA    3 1 1 EFB386BDFB86E2249988443E79123773662CE0F4530BAC08732FFF4E5489262F
+_443._tcp.home.htools.  19      IN      RRSIG   TLSA 13 2 3600 20240711000000 20240620000000 24809 htools. MbIIk5HlsNn7loPDSlzzs1zCnmHf5H+NhUjUzD6tuQbAiWDxeVUdP8S2C3Ky51oOoS9BVah/kinp7rVvKM5bDA==
