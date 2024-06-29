@@ -1,6 +1,6 @@
 {
   "name": "stateless-dane",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A library/utility for Stateless DANE certificates",
   "keywords": [
     "dane",
@@ -30,14 +30,14 @@
     "lib/**/*"
   ],
   "dependencies": {
-    "bcfg": "^0.2.1",
+    "bcfg": "^0.2.2",
     "bcrypto": "https://github.com/pinheadmz/bcrypto#ssl1",
     "bns": "^0.15.0",
-    "bsert": "^0.0.10",
-    "hs-client": "^0.0.13",
+    "bsert": "^0.0.13",
+    "hs-client": "^6.0.0",
     "urkel": "^1.0.3"
   },
   "devDependencies": {
-    "bmocha": "^2.1.8"
+    "bmocha": "^2.2.0"
   }
 }
